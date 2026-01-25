@@ -10,7 +10,7 @@ Vi väljer 20 bilder från [Flickr 8k Dataset](https://github.com/awsaf49/flickr
 Bilderna konverteras med SDXL:s VAE (madebyollin/sdxl-vae-fp16-fix ) för att omvandla 
 varje bild till dess latenta rymd, dvs 128x128x4@f32 om bilden är 1024x1024x3.
 
-Istället för flyttal kvantifierar vi värderna (“pixlarna” i kanalerna) med 8 bitar (uint8) och sparar
+Istället för flyttal kvantifierar vi värderna som heltal med 8/10/12/16 bitar och sparar
 som vanligt bildformat (RGBA) inför nästa steg.
 
 Därefter komprimeras datan med ~~JPEG~~ AVIF respektive PNG i tre olika kvalitetslägen (vilket ger
