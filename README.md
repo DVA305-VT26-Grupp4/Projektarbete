@@ -8,18 +8,18 @@ komprimeras med AVIF i jämförelse med PNG samt en okomprimerad referens.
 Vi väljer slumpat urval av bilder från [Flickr 8k Dataset](https://github.com/awsaf49/flickr-dataset) eller [The Kodak Lossless True Color Image Suite](https://github.com/MohamedBakrAli/Kodak-Lossless-True-Color-Image-Suite)
 
 Bilderna konverteras med SDXL:s VAE (madebyollin/sdxl-vae-fp16-fix ) för att omvandla 
-varje bild till dess “latent space”, dvs 128x128x4 (float32).
+varje bild till dess latenta rymd, dvs 128x128x4@f32 om bilden är 1024x1024x3.
 
-Istället för flyttal approximerar vi värderna (“pixlarna” i kanalerna) med 8 bitar (int8) och sparar
-som en vanlig bild (RGBA).
+Istället för flyttal kvantifierar vi värderna (“pixlarna” i kanalerna) med 8 bitar (uint8) och sparar
+som vanligt bildformat (RGBA) inför nästa steg.
 
-Därefter komprimeras den bilden med ~~JPEG~~ AVIF respektive PNG i tre olika kvalitetslägen (vilket ger
-olika filstorlekar).
+Därefter komprimeras datan med ~~JPEG~~ AVIF respektive PNG i tre olika kvalitetslägen (vilket ger
+olika filstorlekar). AVIF väljs då detta format stödjer fyra kanaler (RGBA), till skillnad från JPG (RGB).
 
-Slutligen återskapas varje latent bild från de komprimerade filerna och omvandlas tillbaka med
+Slutligen återskapas varje latent representation från de komprimerade filerna och omvandlas tillbaka med
 samma VAE till en RGB‑bild.
 
-Vi tar mäter skillnaden med PSNR och SSIM mellan den ursprungliga bilden och varje rekonstruktion och jämför dessa med filstorleken.
+Vi tar mäter skillnaden mätt i PSNR och SSIM mellan den ursprungliga bilden och varje rekonstruktion och jämför dessa med filstorleken.
 
 
 
