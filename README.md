@@ -5,7 +5,7 @@ Hur påverkas den uppmätta bildkvaliteten och filstorleken när SDXL:s latenta 
 komprimeras med AVIF i jämförelse med PNG samt en okomprimerad referens.
 
 ## Metod 
-Vi väljer slumpat urval av bilder från [Flickr 8k Dataset](https://github.com/awsaf49/flickr-dataset) eller [The Kodak Lossless True Color Image Suite](https://github.com/MohamedBakrAli/Kodak-Lossless-True-Color-Image-Suite)
+Vi väljer 20 bilder från [Flickr 8k Dataset](https://github.com/awsaf49/flickr-dataset) eller [The Kodak Lossless True Color Image Suite](https://github.com/MohamedBakrAli/Kodak-Lossless-True-Color-Image-Suite)
 
 Bilderna konverteras med SDXL:s VAE (madebyollin/sdxl-vae-fp16-fix ) för att omvandla 
 varje bild till dess latenta rymd, dvs 128x128x4@f32 om bilden är 1024x1024x3.
