@@ -19,9 +19,10 @@ olika filstorlekar). AVIF väljs då detta format stödjer fyra kanaler (RGBA), 
 Slutligen återskapas varje latent representation från de komprimerade filerna och omvandlas tillbaka med
 samma VAE till en RGB‑bild.
 
-Vi mäter skillnaden uttryckt i PSNR och SSIM mellan den ursprungliga bilden och varje rekonstruktion och jämför dessa med filstorleken.
+Vi mäter skillnaden uttryckt i PSNR och SSIM mellan den ursprungliga bilden och varje rekonstruktion och jämför dessa med respektive filstorlek.
 
 
+## Referenser
 
-## Youtube-länkar
+### Youtube-länkar
 [![Demo video](https://img.youtube.com/vi/ywYuZrLENH0/hqdefault.jpg)](https://www.youtube.com/watch?v=ywYuZrLENH0&t=3s)
