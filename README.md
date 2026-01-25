@@ -13,7 +13,7 @@ varje bild till dess latenta rymd, dvs 128x128x4@f32 om bilden är 1024x1024x3.
 Istället för flyttal kvantifierar vi värderna som heltal med 8/10/12/16 bitar och sparar
 som vanligt bildformat (RGBA) inför nästa steg.
 
-Bilddatan komprimeras med AVIF respektive PNG i tre olika kvalitetslägen, låg/medel/hög (vilket ger
+Bilddatan komprimeras med PNG respektive AVIF i tre olika kvalitetslägen, låg/medel/hög (vilket ger
 olika filstorlekar). AVIF väljs då detta format stödjer fyra kanaler (RGBA), till skillnad från JPG (RGB).
 
 Slutligen återskapas varje latent representation från de komprimerade filerna och omvandlas tillbaka med
