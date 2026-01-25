@@ -22,7 +22,9 @@ samma VAE till en RGB‑bild.
 Vi mäter skillnaden uttryckt i PSNR och SSIM mellan den ursprungliga bilden och varje rekonstruktion och jämför dessa med respektive filstorlek.
 
 
-## Referenser
+## Länkar/Referenser
+### PSNR/SSIM
+[Image Quality Metrics: PSNR vs. SSIM](https://ieeexplore.ieee.org/document/5596999)
 
-### Youtube-länkar
+### VAE
 [![Demo video](https://img.youtube.com/vi/ywYuZrLENH0/hqdefault.jpg)](https://www.youtube.com/watch?v=ywYuZrLENH0&t=3s)
