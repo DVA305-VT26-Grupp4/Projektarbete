@@ -8,7 +8,7 @@ komprimeras med AVIF i jämförelse med PNG samt en okomprimerad referens.
 Vi väljer 20 bilder från [Flickr 8k Dataset](https://github.com/awsaf49/flickr-dataset) (eller alternativt [The Kodak Lossless True Color Image Suite](https://github.com/MohamedBakrAli/Kodak-Lossless-True-Color-Image-Suite)).
 
 Bilderna konverteras med SDXL:s VAE (madebyollin/sdxl-vae-fp16-fix ) för att omvandla 
-varje bild till dess latenta rymd, dvs 128x128x4@f32 om bilden är 1024x1024xRGB. 
+varje bild till dess latenta rymd, dvs 128x128x4@f32 om bilden är 1024x1024xRGB (HxWxC). 
 
 Istället för flyttal kvantifierar vi värderna som heltal med 8/10/12/16 bitar och sparar
 som vanligt bildformat (RGBA) inför nästa steg.
