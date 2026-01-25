@@ -28,3 +28,5 @@ Vi mäter skillnaden uttryckt i PSNR och SSIM mellan den ursprungliga bilden och
 
 ### VAE
 [![Demo video](https://img.youtube.com/vi/ywYuZrLENH0/hqdefault.jpg)](https://www.youtube.com/watch?v=ywYuZrLENH0&t=3s)
+[![Demo video](https://img.youtube.com/vi/9NgC0sh9Msc/hqdefault.jpg)](https://www.youtube.com/watch?v=9NgC0sh9Msc)
+
