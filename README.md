@@ -1,7 +1,7 @@
 # Projektarbete - SDXL VAE
 
 ## Frågeställning
-Hur påverkas den uppmätta bildkvaliteten och filstorleken när SDXL:s Latenta rymd 
+Hur påverkas den uppmätta bildkvaliteten och filstorleken när SDXL:s latenta rymd 
 komprimeras med AVIF i jämförelse med PNG samt en okomprimerad referens.
 
 ## Metod 
