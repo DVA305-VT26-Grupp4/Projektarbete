@@ -1,0 +1,3 @@
+[submodule "dva305-report"]
+	path = dva305-report
+	url = https://github.com/mdahlgrengadd/dva305-report.git
