@@ -36,10 +36,9 @@ jobs:
           working_directory: dva305-report
           latexmk_use_xelatex: true
           pre_compile: |
-            cp /github/workspace/.fonts/*.ttf /usr/share/fonts/truetype/
+            mkdir -p /usr/share/fonts/truetype/msfonts
+            find /github/workspace/.fonts -name '*.ttf' -exec cp {} /usr/share/fonts/truetype/msfonts/ \;
             fc-cache -f -v
-          extra_fonts: |
-            ./.fonts/*.ttf
 
       - name: Prepare deployment
         run: |
