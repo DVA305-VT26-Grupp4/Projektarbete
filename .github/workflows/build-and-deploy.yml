@@ -23,11 +23,12 @@ jobs:
 
       - name: Download MS Core Fonts
         run: |
-          mkdir -p .fonts
           echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
           sudo apt-get update
           sudo apt-get install -y ttf-mscorefonts-installer
-          cp /usr/share/fonts/truetype/msttcorefonts/*.ttf .fonts/
+          mkdir -p dva305-report/.fonts
+          cp /usr/share/fonts/truetype/msttcorefonts/*.ttf dva305-report/.fonts/
+          ls -la dva305-report/.fonts/
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
@@ -37,7 +38,8 @@ jobs:
           latexmk_use_xelatex: true
           pre_compile: |
             mkdir -p /usr/share/fonts/truetype/msfonts
-            find /github/workspace/.fonts -name '*.ttf' -exec cp {} /usr/share/fonts/truetype/msfonts/ \;
+            cp .fonts/*.ttf /usr/share/fonts/truetype/msfonts/ || find .fonts -name '*.ttf' -exec cp {} /usr/share/fonts/truetype/msfonts/ \;
+            ls /usr/share/fonts/truetype/msfonts/
             fc-cache -f -v
 
       - name: Prepare deployment
