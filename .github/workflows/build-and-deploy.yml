@@ -7,10 +7,11 @@ on:
     types: [submodule-update]
 
 permissions:
-  contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +32,6 @@ jobs:
           sudo apt-get install -y ttf-mscorefonts-installer
           mkdir -p dva305-report/.fonts
           cp /usr/share/fonts/truetype/msttcorefonts/*.ttf dva305-report/.fonts/
-          ls -la dva305-report/.fonts/
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
@@ -42,7 +42,6 @@ jobs:
           pre_compile: |
             mkdir -p /usr/share/fonts/truetype/msfonts
             cp .fonts/*.ttf /usr/share/fonts/truetype/msfonts/ || find .fonts -name '*.ttf' -exec cp {} /usr/share/fonts/truetype/msfonts/ \;
-            ls /usr/share/fonts/truetype/msfonts/
             fc-cache -f -v
 
       - name: Prepare deployment
@@ -50,9 +49,18 @@ jobs:
           mkdir -p deploy
           cp dva305-report/main.pdf deploy/projarb-latest.pdf
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./deploy
-          force_orphan: true
+          path: ./deploy
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
