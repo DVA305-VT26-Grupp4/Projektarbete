@@ -1,0 +1,52 @@
+name: Build and Deploy PDF
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [submodule-update]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Update submodule to latest
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          git submodule update --remote dva305-report
+
+      - name: Install MS Core Fonts
+        run: |
+          echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+          sudo apt-get update
+          sudo apt-get install -y ttf-mscorefonts-installer
+          sudo fc-cache -f -v
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: dva305-report
+          latexmk_use_xelatex: true
+          pre_compile: |
+            fc-cache -f -v
+          extra_fonts: |
+            /usr/share/fonts/truetype/msttcorefonts/*.ttf
+
+      - name: Prepare deployment
+        run: |
+          mkdir -p deploy
+          cp dva305-report/main.pdf deploy/projektarbete.pdf
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          force_orphan: true
