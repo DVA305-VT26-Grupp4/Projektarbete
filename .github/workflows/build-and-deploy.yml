@@ -21,12 +21,13 @@ jobs:
         run: |
           git submodule update --remote dva305-report
 
-      - name: Install MS Core Fonts
+      - name: Download MS Core Fonts
         run: |
+          mkdir -p .fonts
           echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
           sudo apt-get update
           sudo apt-get install -y ttf-mscorefonts-installer
-          sudo fc-cache -f -v
+          cp /usr/share/fonts/truetype/msttcorefonts/*.ttf .fonts/
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
@@ -35,14 +36,15 @@ jobs:
           working_directory: dva305-report
           latexmk_use_xelatex: true
           pre_compile: |
+            cp /github/workspace/.fonts/*.ttf /usr/share/fonts/truetype/
             fc-cache -f -v
           extra_fonts: |
-            /usr/share/fonts/truetype/msttcorefonts/*.ttf
+            ./.fonts/*.ttf
 
       - name: Prepare deployment
         run: |
           mkdir -p deploy
-          cp dva305-report/main.pdf deploy/projektarbete.pdf
+          cp dva305-report/main.pdf deploy/projarb-latest.pdf
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
