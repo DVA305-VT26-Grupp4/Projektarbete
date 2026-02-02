@@ -9,7 +9,7 @@
 ## Föreslag på upplägg
 1. **Inledning**
 - [x] Nuvarande beskrivning (varför latent-kompression är intressant ML-pipeline, lagring, throughput etc).
-- [ ] Kort syfte: “vi undersöker om …”
+- [ ] Kort syfte: "vi undersöker om …"
 - [ ] Avslutas med frågeställning?
 
 3. **Bakgrund**
@@ -23,11 +23,11 @@
 - [ ] Vad vi inte undersöker (t.ex. ingen träning, inga andra codecs, inga humanstudier).
 
 5. **Metod**
-Beskrvining av experimentdesignen. Variabler och kontroller som ex:
-- [ ] codec, bitdjup, AVIF-quality, ev PNG-level
-- [ ] filstorlek/bitrate, PSNR, SSIM
-- [ ] OBS! Kontrollera att exvis samma VAE, samma preprocess, samma bildurval
-- [ ] Diagram av "pipelinen" + exakt hur kvantisering görs (ex skala/offset, clipping, per-bild vs global normalisering).
+Beskrvining av experimentdesignen. Variabler och vad vi behöver kolla för jämförbara resultat
+- [ ] Vad vi använder: Codec (VAE), bitdjup, AVIF-quality, ev PNG-level
+- [ ] Vad vi producerar (resultat): Filstorlek/bitrate, PSNR, SSIM
+- [ ] Beskriv vad som är samma, vad som ändras (samma VAE, samma preprocess, samma bildurval, ändrad AVIF-quality) 
+- [ ] Diagram av "pipelinen" + exakt hur kvantisering görs (tex skala/offset, clipping, per-bild vs global normalisering).
 - [ ] Dataval: Exakt hur vi väljer 20 bilder (slump med seed, eller motiverat urval etc ).
 
 6. **Referenser**
