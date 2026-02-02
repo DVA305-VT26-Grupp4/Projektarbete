@@ -2,4 +2,4 @@
 
 
 ## CI/CD 
-Automatisk kompilation (Claude) av LaTex-rapporten finns ![här](https://dva305-vt26-grupp4.github.io/Projektarbete/projarb-latest.pdf)
+Automatisk kompilation (Claude) av LaTex-rapporten finns [här](https://dva305-vt26-grupp4.github.io/Projektarbete/projarb-latest.pdf)
