@@ -77,3 +77,21 @@ This folder contains academic papers and references used in the project.
   doi          = {10.1109/ICPR.2010.579}
 }
 ```
+
+---
+
+## Variational Autoencoders: VAE to VQ-VAE / dVAE
+
+**Source:** [Rohit Bandaru's Blog](https://rohitbandaru.github.io/blog/VAEs/)
+
+A comprehensive blog post covering the evolution from vanilla autoencoders to variational autoencoders (VAE), β-VAE, vector-quantized VAE (VQ-VAE), and discrete VAE (dVAE). Includes detailed mathematical derivations of ELBO, reparameterization tricks, and practical implementation details.
+
+```tex
+@article{bandaru2025variational-autoencoders-vae-to-vq-vae-dvae,
+  title   = {Variational Autoencoders: VAE to VQ-VAE / dVAE},
+  author  = {Bandaru, Rohit},
+  year    = {2025},
+  month   = {Feb},
+  url     = {https://rohitbandaru.github.io/blog/VAEs/}
+}
+```
